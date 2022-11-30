@@ -45,7 +45,7 @@ body {
 /* Parte sinistra con lista users */
 .users-content {
     width: 37%;
-    background-color: red;
+    background-color: #fff;
 }
 
 /* Parte destra con le chat */
@@ -129,7 +129,7 @@ body {
     color: #B7BABB;
     font-size: 0.8rem;
     top: 50%;
-    left: 30px;
+    left: 25px;
     transform: translateY(-50%);
 }
 
@@ -138,7 +138,43 @@ body {
     background-color: #fff;
     border-radius: 3px;
     border: 0;
-    padding: 6px 3px 6px 70px;
+    padding: 6px 3px 6px 50px;
     font-size: 0.7rem;
     color: #B7BABB;
+}
+
+.list-users > ul {
+    list-style-type: none;
+    font-size: 0.8rem;
+    color: #bdc0c2;
+    font-size: 0.6rem;
+}
+
+.list-users > ul > li {
+    display: flex;
+    align-items: flex-start;
+    height: 60px;
+    background-color: #fff;
+    padding: 8px;
+    border-bottom: 1px solid #E9EBEB;
+}
+
+.list-users > ul > li.active {
+    background-color: #E9EBEB;
+}
+
+.list-users > ul > li img {
+    height: 100%;
+}
+
+.user {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.name-user {
+    font-weight: 600;
+    color: #163240;
+    font-size: 0.8rem;
+    padding-bottom: 3px;
 }
