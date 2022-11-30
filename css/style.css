@@ -87,3 +87,31 @@ body {
 .my-info-icons i {
     padding: 0 8px;
 }
+
+/* Notifiche */
+.notifications {
+    display: flex;
+    align-items: center;
+    background-color: #8EDAFC;
+    height: 60px;
+    font-size: 0.7rem;
+    padding: 10px;
+}
+
+/* Icona campana */
+.notifications i {
+    background-color: #fff;
+    padding: 10px 8px;
+    border-radius: 100%;
+    color: #8EDAFC;
+    font-size: 0.9rem;
+}
+
+.notifications a {
+    display: block;
+    color: #5D8597;
+}
+
+.desktop-notifications {
+    padding-left: 10px;
+}
