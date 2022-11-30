@@ -52,7 +52,6 @@ body {
 /* Parte destra con le chat */
 .chat-content {
     width: 63%;
-    background-color: blue;
 }
 
 /* Parte in alto con info del mio profilo e dell'utente */
@@ -187,4 +186,54 @@ body {
 
 .info.users .user {
     color: #8B9193;
+}
+
+
+/* Parte chat */
+.chat {
+    height: calc(100% - 100px);
+    background-image: url('../img/mine.jpg');
+}
+
+.chat > ul {
+    list-style-type: none;
+    padding: 30px 60px;
+    font-size: 0.7rem;
+}
+
+.chat > ul > li {
+    display: flex;
+}
+
+/* Mio messaggio */
+.my-message {
+    justify-content: flex-end;
+}
+
+.my-message .text-message {
+    background-color: #D5F9BA;
+    float: right;
+}
+
+.text-message {
+    margin: 5px 0;
+    min-width: 200px;
+    border-radius: 5px;
+    padding: 8px 8px 0 8px;
+}
+
+.text-message .hour {
+    text-align: right;
+    width: 100%;
+}
+
+/* Messaggio utente */
+.user-message .text-message {
+    background-color: #fff;
+}
+
+/* Parte con input e icone */
+.input-text {
+    background-color: #f3eeea;
+    height: 50px;
 }
