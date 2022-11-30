@@ -122,8 +122,8 @@
                 <!-- Lista dei messaggi -->
                 <ul>
                     <div v-for="(contact, index) in contacts">
-                        <li v-if="activeContact === index">
-                            <div v-for="message in contact.messages" class="text-message">
+                        <li v-if="activeContact === index" v-for="message in contact.messages" :class="message.status === 'sent' ? 'my-message' : 'user-message'">
+                            <div class="text-message">
                                 {{message.message}}
                             </div>
                         </li>
@@ -133,9 +133,7 @@
                         <div class="text-message">
                             Ricordati di stendere i panni
 
-                            <div class="hour">
-                                15:00
-                            </div>
+                            
                         </div>
                     </li>
 

@@ -202,13 +202,13 @@ body {
     overflow-y: auto;
 }
 
-.chat > ul {
+.chat ul {
     list-style-type: none;
     padding: 30px 60px;
     font-size: 0.7rem;
 }
 
-.chat > ul > li {
+.chat ul li {
     display: flex;
 }
 
