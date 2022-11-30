@@ -93,18 +93,24 @@
 
             <div class="info users">
                 <!-- Parte con avatar e nome -->
-                <div class="info-avatar">
-                    <img class="avatar" src="img/avatar_1.jpg" alt="avatar 1">
-                    <div class="user">
-                            
-                        <div class="name">
-                            Samuele
-                        </div>
+                <div class="info-avatar" v-for="(name, index) in contacts">
 
-                        <div class="last-message">
-                            Ultimo accesso oggi alle 12:00
+                    <div v-if="activeContact === index">
+
+                        <img class="avatar" :src="name.avatar" alt="avatar 1">
+
+                        <div class="user">
+                                
+                            <div class="name">
+                                {{name.name}}
+                            </div>
+
+                            <div class="last-message">
+                                Ultimo accesso oggi alle 12:00
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
 
                 <!-- Parte icone -->
