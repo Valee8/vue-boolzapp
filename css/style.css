@@ -115,3 +115,29 @@ body {
 .desktop-notifications {
     padding-left: 10px;
 }
+
+/* Barra di ricerca */
+.search-users {
+    background-color: #f8f8f8;
+    padding: 6px;
+    position: relative;
+}
+
+.search-users i {
+    position: absolute;
+    color: #B7BABB;
+    font-size: 0.8rem;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+}
+
+.input-search {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    border: 0;
+    padding: 6px 3px 6px 70px;
+    font-size: 0.7rem;
+    color: #B7BABB;
+}
