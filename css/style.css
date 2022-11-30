@@ -3,3 +3,41 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #D8DBD6;
+    font-size: 16px;
+}
+
+.top-bg {
+    background-color: #009688;
+    height: 110px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 20px auto;
+    display: flex;
+    position: relative;
+    z-index: 20;
+}
+
+.container > div {
+    width: 50%;
+    height: calc(100vh - 40px);
+}
+
+.users-content {
+    background-color: red;
+}
+
+.chat-content {
+    background-color: blue;
+}
