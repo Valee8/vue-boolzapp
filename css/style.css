@@ -8,6 +8,7 @@
 img {
     max-width: 100%;
     border-radius: 100%;
+    height: 100%;
 }
 
 /* Body */
@@ -54,8 +55,8 @@ body {
     background-color: blue;
 }
 
-/* Parte in alto a sinistra con info del mio profilo */
-.my-info {
+/* Parte in alto con info del mio profilo e dell'utente */
+.info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,29 +65,32 @@ body {
     padding: 5px 10px 5px 5px;
 }
 
-.my-name {
+.info.users {
+    border-left: 1px solid rgba(0, 0, 0, .1);
+}
+
+.info:not(.users) .name {
     padding-left: 10px;
+}
+
+.name {
     font-size: 0.8rem;
     padding-top: 2px;
     color: #404f5e;
 }
 
-.my-info-avatar {
+.info-avatar {
     display: flex;
     align-items: center;
     height: 100%;
 }
 
-.my-avatar {
-    height: 100%;
-}
-
-.my-info-icons {
+.info-icons {
     color: #B1B1B1;
 }
 
-.my-info-icons i {
-    padding: 0 8px;
+.info-icons i {
+    padding: 0 5px;
 }
 
 /* Notifiche */
@@ -146,9 +150,6 @@ body {
 /* Inizio lista utenti */
 .list-users > ul {
     list-style-type: none;
-    font-size: 0.8rem;
-    color: #bdc0c2;
-    font-size: 0.6rem;
 }
 
 .list-users > ul > li {
@@ -164,13 +165,17 @@ body {
     background-color: #E9EBEB;
 }
 
-.list-users > ul > li img {
-    height: 100%;
+.user, .hour {
+    color: #bdc0c2;
+    font-size: 0.6rem;
 }
 
 .user {
-    flex-grow: 1;
     padding-left: 10px;
+}
+
+.list-users .user {
+    flex-grow: 1;
 }
 
 .name-user {
@@ -178,4 +183,8 @@ body {
     color: #163240;
     font-size: 0.8rem;
     padding-bottom: 3px;
+}
+
+.info.users .user {
+    color: #8B9193;
 }
