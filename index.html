@@ -121,15 +121,13 @@
 
                 <!-- Lista dei messaggi -->
                 <ul>
-                    <li class="my-message">
-                        <div class="text-message">
-                            Hai portato a spasso il cane?
-
-                            <div class="hour">
-                                15:00
+                    <div v-for="(contact, index) in contacts">
+                        <li v-if="activeContact === index">
+                            <div v-for="message in contact.messages" class="text-message">
+                                {{message.message}}
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    </div>
 
                     <!-- <li class="my-message">
                         <div class="text-message">
