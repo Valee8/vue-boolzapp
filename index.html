@@ -15,7 +15,7 @@
     <div class="top-bg"></div>
 
     <!-- Container -->
-    <div class="container">
+    <div id="app" class="container">
         
         <!-- Parte sinistra con lista users -->
         <div class="users-content">
@@ -60,15 +60,15 @@
             <!-- Lista utenti -->
             <div class="list-users">
                 <ul>
-                    <li class="active">
+                    <li v-for="(users, index) in contacts">
                         <!-- Avatar -->
-                        <img src="img/avatar_1.jpg" alt="avatar 1">
+                        <img :src="contacts[index].avatar" :alt="'avatar ' + contacts[index].name">
 
                         <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
 
                             <div class="name-user">
-                                Michele
+                                {{contacts[index].name}}
                             </div>
 
                             <div class="last-message">
@@ -82,11 +82,9 @@
                         </div>
                     </li>
 
-                    <li>
-                        <!-- Avatar -->
+                    <!-- <li>
                         <img src="img/avatar_2.jpg" alt="avatar 2">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -98,17 +96,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_3.jpg" alt="avatar 3">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -120,17 +115,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_4.jpg" alt="avatar 4">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -142,17 +134,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_4.jpg" alt="avatar 4">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -164,17 +153,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_4.jpg" alt="avatar 4">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -186,17 +172,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_4.jpg" alt="avatar 4">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -208,17 +191,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_4.jpg" alt="avatar 4">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -230,17 +210,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_4.jpg" alt="avatar 4">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -252,17 +229,14 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
                     </li>
 
                     <li>
-                        <!-- Avatar -->
                         <img src="img/avatar_4.jpg" alt="avatar 4">
                         
-                        <!-- Nome e ultimo messaggio inviato -->
                         <div class="user">
                             
                             <div class="name-user">
@@ -274,11 +248,11 @@
                             </div>
                         </div>
         
-                        <!-- Ora -->
                         <div class="hour">
                             12:00
                         </div>
-                    </li>
+                    </li> -->
+
                 </ul>
                
             </div>
