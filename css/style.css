@@ -4,17 +4,20 @@
     box-sizing: border-box;
 }
 
+/* Immagini */
 img {
     max-width: 100%;
     border-radius: 100%;
 }
 
+/* Body */
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #D8DBD6;
     font-size: 16px;
 }
 
+/* Sfondo verde in alto */
 .top-bg {
     background-color: #009688;
     height: 110px;
@@ -25,6 +28,7 @@ body {
     z-index: 1;
 }
 
+/* Container */
 .container {
     max-width: 1024px;
     margin: 20px auto;
@@ -33,19 +37,23 @@ body {
     z-index: 20;
 }
 
+/* Contenuto principale */
 .container > div {
     width: 50%;
     height: calc(100vh - 40px);
 }
 
+/* Parte sinistra con lista users */
 .users-content {
     background-color: red;
 }
 
+/* Parte destra con le chat */
 .chat-content {
     background-color: blue;
 }
 
+/* Parte in alto a sinistra con info del mio profilo */
 .my-info {
     display: flex;
     justify-content: space-between;
