@@ -67,20 +67,15 @@ body {
 
 .info.users {
     border-left: 1px solid rgba(0, 0, 0, .1);
-    position: relative;
 }
 
-.info-avatar:not(.active) {
+.info.users .info-avatar:not(.active) {
     display: none;
-}
-
-.info.users .info-avatar > div {
-    height: 100%;
 }
 
 .info:not(.users) .name {
     padding-left: 10px;
-}
+} 
 
 .name {
     font-size: 0.8rem;
@@ -92,16 +87,10 @@ body {
     height: 100%;
 }
 
-.info.users .info-avatar > div {
+.info .info-avatar {
     display: flex;
     align-items: center;
-    height: 100%;
-}
-
-.info:not(.users) .info-avatar {
-    display: flex;
-    align-items: center;
-}
+} 
 
 .info-icons {
     color: #B1B1B1;
@@ -211,7 +200,6 @@ body {
 .info.users .user {
     color: #8B9193;
 }
-
 
 /* Parte chat */
 .chat {

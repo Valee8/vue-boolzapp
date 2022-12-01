@@ -95,8 +95,6 @@
                 <!-- Parte con avatar e nome -->
                 <div class="info-avatar" v-for="(name, index) in contacts" :class="activeContact === index ? 'active' : ''">
 
-                    <div v-if="activeContact === index">
-
                         <img class="avatar" :src="name.avatar" :alt="'avatar ' + name.name">
 
                         <div class="user">
@@ -109,7 +107,6 @@
                                 Ultimo accesso oggi alle 12:00
                             </div>
                         </div>
-                    </div>
                     
                 </div>
 
@@ -147,7 +144,7 @@
                 <i class="fa-regular fa-face-smile"></i>
 
                 <div v-for="(message, index) in contacts" class="div-input" :class="activeContact === index ? 'active' : ''">
-                    <input v-if="activeContact === index" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage(index)">
+                    <input type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage(index)">
                 </div>
 
                 <i class="fa-solid fa-microphone"></i>
