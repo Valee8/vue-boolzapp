@@ -51,32 +51,35 @@
             <div class="search-users">
                 <!-- Icona lente -->
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" class="input-search" placeholder="Cerca o inizia una nuova chat">
+                <input type="search" class="input-search" placeholder="Cerca o inizia una nuova chat" v-model="search">
             </div>
 
             <!-- Lista utenti -->
             <div class="list-users">
                 <ul>
-                    <li @click="changeContact(index)" :class="activeContact === index ? 'active' : ''" v-for="(users, index) in contacts">
-                        <!-- Avatar -->
-                        <img :src="users.avatar" :alt="'avatar ' + users.name">
 
-                        <!-- Nome e ultimo messaggio inviato -->
-                        <div class="user">
+                    <li @click="changeContact(index)" :class="activeContact === index ? 'active' : ''" v-for="(users, index) in searchContact">
 
-                            <div class="name-user">
-                                {{users.name}}
+                            <!-- Avatar -->
+                            <img :src="users.avatar" :alt="'avatar ' + users.name">
+
+                            <!-- Nome e ultimo messaggio inviato -->
+                            <div class="user">
+
+                                <div class="name-user">
+                                    {{users.name}}
+                                </div>
+
+                                <div class="last-message">
+                                    {{users.messages[users.messages.length - 1].message}}
+                                </div>
                             </div>
-
-                            <div class="last-message">
-                                {{users.messages[users.messages.length - 1].message}}
+            
+                            <!-- Ora -->
+                            <div class="hour">
+                                12:00
                             </div>
-                        </div>
-        
-                        <!-- Ora -->
-                        <div class="hour">
-                            12:00
-                        </div>
+                            
                     </li>
 
                 </ul>
