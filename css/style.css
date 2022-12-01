@@ -92,10 +92,6 @@ body {
     height: 100%;
 }
 
-/* .info.users .info-avatar {
-    display: inline-block;
-} */
-
 .info.users .info-avatar > div {
     display: flex;
     align-items: center;
@@ -110,13 +106,6 @@ body {
 .info-icons {
     color: #B1B1B1;
 }
-
-/* .info.users .info-icons {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-} */
 
 .info-icons i {
     padding: 0 5px;
