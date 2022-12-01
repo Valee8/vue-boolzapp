@@ -57,20 +57,21 @@ body {
 
 /* Parte in alto con info del mio profilo e dell'utente */
 .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #EAEAEA;
     height: 50px;
     padding: 5px 10px 5px 5px;
 }
 
-.info:not(.users) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .info.users {
     border-left: 1px solid rgba(0, 0, 0, .1);
     position: relative;
+}
+
+.info-avatar:not(.active) {
+    display: none;
 }
 
 .info.users .info-avatar > div {
@@ -91,9 +92,9 @@ body {
     height: 100%;
 }
 
-.info.users .info-avatar {
+/* .info.users .info-avatar {
     display: inline-block;
-}
+} */
 
 .info.users .info-avatar > div {
     display: flex;
@@ -110,12 +111,12 @@ body {
     color: #B1B1B1;
 }
 
-.info.users .info-icons {
+/* .info.users .info-icons {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
-}
+} */
 
 .info-icons i {
     padding: 0 5px;

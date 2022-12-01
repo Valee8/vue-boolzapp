@@ -93,7 +93,7 @@
 
             <div class="info users">
                 <!-- Parte con avatar e nome -->
-                <div class="info-avatar" v-for="(name, index) in contacts">
+                <div class="info-avatar" v-for="(name, index) in contacts" :class="activeContact === index ? 'active' : ''">
 
                     <div v-if="activeContact === index">
 
