@@ -97,7 +97,7 @@
 
                     <div v-if="activeContact === index">
 
-                        <img class="avatar" :src="name.avatar" alt="avatar 1">
+                        <img class="avatar" :src="name.avatar" :alt="'avatar ' + name.name">
 
                         <div class="user">
                                 
@@ -127,164 +127,15 @@
 
                 <!-- Lista dei messaggi -->
                 <ul>
-                    <div v-for="(contact, index) in contacts">
-                        <li v-if="activeContact === index" v-for="message in contact.messages" :class="message.status === 'sent' ? 'my-message' : 'user-message'">
-                            <div class="text-message">
-                                {{message.message}}
-                                <div class="hour">
-                                    {{message.date}}
-                                </div>
-                            </div>
-                        </li>
-                    </div>
-
-                    <!-- <li class="my-message">
+                    <li v-for="(contact, index) in contacts[activeContact].messages" :class="contact.status === 'sent' ? 'my-message' : 'user-message'">
                         <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            
-                        </div>
-                    </li>
-
-                    <li class="user-message">
-                        <div class="text-message">
-                            Tutto fatto!
-
+                            {{contact.message}}
                             <div class="hour">
-                                15:00
+                                {{contact.date}}
                             </div>
                         </div>
+                        
                     </li>
-
-                    <li class="user-message">
-                        <div class="text-message">
-                            Tutto fatto!
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="user-message">
-                        <div class="text-message">
-                            Tutto fatto!
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="user-message">
-                        <div class="text-message">
-                            Tutto fatto!
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="user-message">
-                        <div class="text-message">
-                            Tutto fatto!
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="user-message">
-                        <div class="text-message">
-                            Tutto fatto!
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="user-message">
-                        <div class="text-message">
-                            Tutto fatto!
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="my-message">
-                        <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="my-message">
-                        <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="my-message">
-                        <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="my-message">
-                        <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="my-message">
-                        <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="my-message">
-                        <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="my-message">
-                        <div class="text-message">
-                            Ricordati di stendere i panni
-
-                            <div class="hour">
-                                15:00
-                            </div>
-                        </div>
-                    </li> -->
 
                 </ul>
 
