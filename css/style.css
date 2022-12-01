@@ -256,10 +256,6 @@ body {
     padding: 0 20px;
 }
 
-.div-input {
-    flex-grow: 1;
-}
-
 .input-text i {
     font-size: 1.1rem;
 }
@@ -270,9 +266,9 @@ body {
     border-radius: 3px;
     font-size: 0.7rem;
     margin: 0 20px;
-    width: 95%;
+    flex-grow: 1;
 }
 
-.div-input:not(.active) {
+.input-message:not(.active) {
     display: none;
 }

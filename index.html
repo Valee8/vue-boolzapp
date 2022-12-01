@@ -143,9 +143,7 @@
 
                 <i class="fa-regular fa-face-smile"></i>
 
-                <div v-for="(message, index) in contacts" class="div-input" :class="activeContact === index ? 'active' : ''">
-                    <input type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage(index)">
-                </div>
+                <input v-for="(message, index) in contacts" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage(index)" :class="activeContact === index ? 'active' : ''">
 
                 <i class="fa-solid fa-microphone"></i>
 
