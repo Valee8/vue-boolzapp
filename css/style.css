@@ -278,16 +278,23 @@ body {
     padding: 0 20px;
 }
 
+.div-input {
+    flex-grow: 1;
+}
+
 .input-text i {
     font-size: 1.1rem;
 }
 
-
 .input-message {
-    flex-grow: 1;
     padding: 10px 6px;
     border: 0;
     border-radius: 3px;
     font-size: 0.7rem;
     margin: 0 20px;
+    width: 95%;
+}
+
+.div-input:not(.active) {
+    display: none;
 }
