@@ -134,6 +134,10 @@
                         
                     </li>
 
+                    <li v-if="contacts[activeContact].status === 'received'" v-for="(contact, index) in contacts[activeContact].messages" class="user-message">
+                        {{contact.message}}
+                    </li>
+
                 </ul>
 
             </div>
