@@ -205,7 +205,7 @@ createApp({
 
             this.randomNumber = this.numCasuale(0, this.randomAnswer.length - 1);
 
-            if (!this.newMessage.includes(" ")) {
+            if (this.newMessage.indexOf(" ")) {
 
                 this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: this.newMessage, status: 'sent'});
                             
