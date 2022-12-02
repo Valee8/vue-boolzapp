@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.1.1/build/global/luxon.min.js"></script>
     <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
     <title>Boolzapp</title>
 </head>
@@ -70,14 +71,14 @@
                                     {{users.name}}
                                 </div>
 
-                                <div class="last-message">
+                                <div v-if="users.messages.length != 0" class="last-message">
                                     {{users.messages[users.messages.length - 1].message}}
                                 </div>
                             </div>
             
                             <!-- Ora -->
                             <div class="hour">
-                                12:00
+                                {{dt.hour}}:{{dt.minute}}
                             </div>
                             
                     </li>
@@ -104,7 +105,7 @@
                             </div>
 
                             <div class="last-message">
-                                Ultimo accesso oggi alle 12:00
+                                Ultimo accesso {{today}} alle {{dt.hour}}:{{dt.minute}}
                             </div>
                         </div>
                     
@@ -130,6 +131,18 @@
                             <div class="hour">
                                 {{contact.date}}
                             </div>
+
+                            <div class="arrow-down" @click="contact.isHidden = !contact.isHidden">
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                                <ul v-if="contact.isHidden" class="menu-message">
+                                    <li>
+                                        Info Message
+                                    </li>
+                                    <li @click="deleteMessage(index)">
+                                        Delete message
+                                    </li>
+                                </ul>
                         </div>
                         
                     </li>
@@ -142,7 +155,7 @@
 
                 <i class="fa-regular fa-face-smile"></i>
 
-                <input v-for="(message, index) in contacts" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage(index)" :class="activeContact === index ? 'active' : ''">
+                <input v-for="(message, index) in contacts" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage" :class="activeContact === index ? 'active' : ''">
 
                 <i class="fa-solid fa-microphone"></i>
 

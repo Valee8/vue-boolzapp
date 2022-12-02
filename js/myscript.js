@@ -13,11 +13,20 @@
 // Milestone 4
 // Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
 
+// Milestone 5 - opzionale
+// Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+// Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti 
+
+var DateTime = luxon.DateTime;
+
 const { createApp } = Vue;
 
 createApp({
     data() {
         return {
+            dt: DateTime.now(),
+            today: DateTime.now().plus({ days: 0 }).toRelativeCalendar(),
+            isHidden: false,
             search: '',
             newMessage: '',
             activeContact: 0,
@@ -190,13 +199,16 @@ createApp({
         changeContact(indice) {
             this.activeContact = indice;
         },
-        addMessage(indice) {
+        addMessage() {
 
-            this.contacts[indice].messages.push({date: '10/01/2020 15:51:00', message: this.newMessage, status: 'sent'});
+            this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: this.newMessage, status: 'sent'});
             
-            setTimeout(()=> this.contacts[indice].messages.push({date: '10/01/2020 15:51:00', message: "ok", status: 'received'}), 1000);
-
             this.newMessage = "";
+            
+            setTimeout(()=> this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: "ok", status: 'received'}), 1000);
+        },
+        deleteMessage(indice) {
+            this.contacts[this.activeContact].messages.splice(indice, 1);
         }
     },
     computed: {
@@ -206,7 +218,7 @@ createApp({
               return this.search.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
             });
             }
-            else{
+            else {
               return this.contacts;
             }
           }

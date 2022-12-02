@@ -209,13 +209,13 @@ body {
     overflow-y: auto;
 }
 
-.chat ul {
+.chat > ul {
     list-style-type: none;
     padding: 30px 60px;
     font-size: 0.7rem;
 }
 
-.chat ul li {
+.chat > ul > li {
     display: flex;
 }
 
@@ -226,7 +226,6 @@ body {
 
 .my-message .text-message {
     background-color: #D5F9BA;
-    float: right;
 }
 
 .text-message {
@@ -234,6 +233,40 @@ body {
     min-width: 200px;
     border-radius: 5px;
     padding: 8px 8px 0 8px;
+    position: relative;
+}
+
+
+.arrow-down {
+    position: absolute;
+    right: 2px;
+    top: 4px;
+    font-size: 0.6rem;
+    z-index: 20;
+    cursor: pointer;
+}
+
+.menu-message {
+    list-style-type: none;
+    position: absolute;
+    top: 13px;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .4);
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px 0;
+    z-index: 50;
+}
+
+.menu-message li {
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.menu-message li:hover {
+    background-color: rgba(0, 0, 0, .2);
 }
 
 .text-message .hour {
