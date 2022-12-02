@@ -157,7 +157,9 @@
 
                 <input v-for="(message, index) in contacts" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage" :class="activeContact === index ? 'active' : ''">
 
-                <i class="fa-solid fa-microphone"></i>
+                <i v-if="newMessage.length === 0" class="fa-solid fa-microphone"></i>
+
+                <i v-else class="fa-solid fa-paper-plane" @click="addMessage"></i>
 
             </div>
 
