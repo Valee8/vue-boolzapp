@@ -24,6 +24,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            error: false,
             randomNumber: '',
             randomAnswer: ["Ciao!", "No!", "Sei bello", "Oggi sono stanco", "Ci vediamo domani", "A dopo"],
             dt: DateTime.now(),
@@ -203,13 +204,20 @@ createApp({
         },
         addMessage() {
 
+            console.log(this.newMessage.length);
+
             this.randomNumber = this.numCasuale(0, this.randomAnswer.length - 1);
 
-            if (this.newMessage.indexOf(" ")) {
+            if (this.newMessage.indexOf(" ") && this.newMessage.length != 0) {
+
+                this.error = false;
 
                 this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: this.newMessage, status: 'sent'});
                             
                 setTimeout(()=> this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: this.randomAnswer[this.randomNumber], status: 'received'}), 1000);
+            }
+            else {
+                this.error = true;
             }
 
             this.newMessage = "";

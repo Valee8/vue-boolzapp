@@ -157,6 +157,10 @@
 
                 <input v-for="(message, index) in contacts" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage" :class="activeContact === index ? 'active' : ''">
 
+                <div v-if="error && newMessage.length === 0" class="error">
+                    Non puoi inviare messaggio vuoto o che inizia con uno spazio
+                </div>
+
                 <i v-if="newMessage.length === 0" class="fa-solid fa-microphone"></i>
 
                 <i v-else class="fa-solid fa-paper-plane" @click="addMessage"></i>

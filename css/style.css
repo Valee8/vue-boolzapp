@@ -219,6 +219,12 @@ body {
     display: flex;
 }
 
+.error {
+    font-size: 0.8rem;
+    color: red;
+    padding-right: 20px;
+}
+
 /* Mio messaggio */
 .my-message {
     justify-content: flex-end;
