@@ -201,11 +201,15 @@ createApp({
         },
         addMessage() {
 
-            this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: this.newMessage, status: 'sent'});
-            
+            if (!this.newMessage.includes(" ")) {
+
+                this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: this.newMessage, status: 'sent'});
+                            
+                setTimeout(()=> this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: "ok", status: 'received'}), 1000);
+            }
+
             this.newMessage = "";
             
-            setTimeout(()=> this.contacts[this.activeContact].messages.push({date: `${this.dt.day}/${this.dt.month}/${this.dt.year} ${this.dt.hour}:${this.dt.minute}:${this.dt.second}`, message: "ok", status: 'received'}), 1000);
         },
         deleteMessage(indice) {
             this.contacts[this.activeContact].messages.splice(indice, 1);
