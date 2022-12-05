@@ -24,6 +24,9 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            welcomePopup: true,
+            showChat: false,
+            choise: '',
             // Scritta ultimo accesso
             lastAccess: true,
             // Scritta online
@@ -223,6 +226,16 @@ createApp({
         }
     },
     methods: {
+        myChoise(indice) {
+
+            this.activeContact = indice;
+
+            this.choise = this.activeContact;
+
+            this.showChat = true;
+
+            this.welcomePopup = false;
+        },
         // Faccio scomparire i menu dropdown cliccando fuori
         closeMenu() {
 
@@ -349,7 +362,7 @@ createApp({
             // Assegno a randomNumber un numero compreso tra primo e ultimo elemento di randomAvatar
             this.randomNumber = this.numCasuale(0, this.randomAvatar.length - 1);
 
-            // Faccio apparire il popup
+            // Faccio apparire il popupS
             this.showPopup = true;
 
             // Controllo che non ci siano spazi
@@ -363,6 +376,9 @@ createApp({
 
                 // Faccio scomparire il popup
                 this.showPopup = false;
+            }
+            else {
+                this.error2 = true;
             }
 
             // Svuoto il contenuto di newContact

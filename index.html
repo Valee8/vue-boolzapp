@@ -14,8 +14,18 @@
       
     <!-- Container -->
     <div id="app" class="container">
+
+        <div class="welcome-popup" v-if="welcomePopup">
+            Benvenuto, scegli con chi vuoi chattare: 
+            <ul v-for="(listUsers, index) in contacts" class="list-users-choice">
+                <li @click="myChoise(index)">
+                    {{listUsers.name}}
+                </li>
+            </ul>
+
+        </div>
         
-        <div v-on:click.capture="closeMenu">
+        <div v-on:click.capture="closeMenu" class="content">
             <!-- Parte sinistra con lista users -->
             <div class="users-content">
 
@@ -76,7 +86,7 @@
                 <div class="list-users">
                     <ul>
 
-                        <li @click="changeContact(index)" :class="activeContact === index ? 'active' : ''" v-for="(users, index) in searchContact" v-if="contacts.length != 0">
+                        <li @click="changeContact(index)" :class="activeContact === index && showChat ? 'active' : ''" v-for="(users, index) in searchContact" v-if="contacts.length != 0">
 
                             <!-- Avatar -->
                             <img :src="users.avatar" :alt="'avatar ' + users.name">
@@ -115,7 +125,7 @@
             <!-- Parte destra con le chat -->
             <div class="chat-content">
 
-                <div class="info users" :class="contacts.length === 0 ? 'flex-end' : ''">
+                <div class="info users" :class="contacts.length === 0 ? 'flex-end' : ''" v-if="showChat">
                     <!-- Parte con avatar e nome -->
                     <div class="info-avatar" v-for="(names, index) in contacts" :class="activeContact === index ? 'active' : ''">
 
@@ -160,10 +170,10 @@
 
 
                 <!-- Inizio parte chat -->
-                <div class="chat">
+                <div class="chat" :class="!showChat ? 'height' : ''">
 
                     <!-- Lista dei messaggi -->
-                    <ul>
+                    <ul v-if="showChat">
                         <li v-for="(contact, index) in contacts[activeContact].messages" :class="contact.status === 'sent' ? 'my-message' : 'user-message'" v-if="contacts.length != 0">
                             <div class="text-message">
                                 {{contact.message}}
