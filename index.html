@@ -11,55 +11,72 @@
     <title>Boolzapp</title>
 </head>
 <body>
-
+      
     <!-- Container -->
     <div id="app" class="container">
         
-        <!-- Parte sinistra con lista users -->
-        <div class="users-content">
+        <div v-on:click.capture="closeMenu">
+            <!-- Parte sinistra con lista users -->
+            <div class="users-content">
 
-            <!-- Parte in alto a sinistra con info del mio profilo -->
-            <div class="info">
-                <!-- Parte con avatar e nome -->
-                <div class="info-avatar">
-                    <img class="avatar" src="img/avatar_io.jpg" alt="mio avatar">
-                    <div class="name">Sofia</div>
+                <!-- Parte in alto a sinistra con info del mio profilo -->
+                <div class="info">
+                    <!-- Parte con avatar e nome -->
+                    <div class="info-avatar">
+                        <img class="avatar" src="img/avatar_2.jpg" alt="mio avatar">
+                        <div class="name">Valerio</div>
+                    </div>
+
+                    <!-- Parte icone -->
+                    <div class="info-icons">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical dots" @click="showMenuMyInfo = !showMenuMyInfo"></i>
+
+                        <ul v-if="showMenuMyInfo" class="menu-dropdown">
+                            <li @click="addConversation">
+                                Aggiungi conversazione
+                            </li>
+                        </ul>
+                    </div>
+                        
+                    <div v-if="showPopup" class="popup">
+                        <div class="error">
+                            Non puoi inviare contenuto vuoto
+                        </div>
+
+                        <input type="text" v-model="newContact" placeholder="Inserisci nome contatto" @KeyUp.enter="addConversation">
+                        <button @click="addConversation">Aggiungi</button>
+                        <button @click="cancelButton">Annulla</button>
+                    </div>
                 </div>
 
-                <!-- Parte icone -->
-                <div class="info-icons">
-                    <i class="fa-solid fa-circle-notch"></i>
-                    <i class="fa-solid fa-message"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
+                <!-- Notifiche desktop -->
+                <div class="notifications">
 
-            <!-- Notifiche desktop -->
-            <div class="notifications">
+                    <!-- Icona -->
+                    <i class="fa-solid fa-bell-slash"></i>
 
-                <!-- Icona -->
-                <i class="fa-solid fa-bell-slash"></i>
+                    <!-- Scritte notifiche -->
+                    <div class="desktop-notifications">
+                        Ricevi nuove notifiche di messaggi
+                        <a href="#">Attiva notifiche desktop</a>
+                    </div>
 
-                <!-- Scritte notifiche -->
-                <div class="desktop-notifications">
-                    Ricevi nuove notifiche di messaggi
-                    <a href="#">Attiva notifiche desktop</a>
                 </div>
 
-            </div>
+                <!-- Barra di ricerca -->
+                <div class="search-users">
+                    <!-- Icona lente -->
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="search" class="input-search" placeholder="Cerca o inizia una nuova chat" v-model="search">
+                </div>
 
-            <!-- Barra di ricerca -->
-            <div class="search-users">
-                <!-- Icona lente -->
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="search" class="input-search" placeholder="Cerca o inizia una nuova chat" v-model="search">
-            </div>
+                <!-- Lista utenti -->
+                <div class="list-users">
+                    <ul>
 
-            <!-- Lista utenti -->
-            <div class="list-users">
-                <ul>
-
-                    <li @click="changeContact(index)" :class="activeContact === index ? 'active' : ''" v-for="(users, index) in searchContact">
+                        <li @click="changeContact(index)" :class="activeContact === index ? 'active' : ''" v-for="(users, index) in searchContact" v-if="contacts.length != 0">
 
                             <!-- Avatar -->
                             <img :src="users.avatar" :alt="'avatar ' + users.name">
@@ -71,6 +88,7 @@
                                     {{users.name}}
                                 </div>
 
+                                <!-- Ultimo messaggio inviato appare solo se la lunghezza di users.messages non è 0 -->
                                 <div v-if="users.messages.length != 0" class="last-message">
                                     {{users.messages[users.messages.length - 1].message}}
                                 </div>
@@ -80,96 +98,118 @@
                             <div class="hour">
                                 {{dt.hour}}:{{dt.minute}}
                             </div>
-                            
-                    </li>
-
-                </ul>
-               
-            </div>
-
-        </div>
-
-        <!-- Parte destra con le chat -->
-        <div class="chat-content">
-
-            <div class="info users">
-                <!-- Parte con avatar e nome -->
-                <div class="info-avatar" v-for="(name, index) in contacts" :class="activeContact === index ? 'active' : ''">
-
-                        <img class="avatar" :src="name.avatar" :alt="'avatar ' + name.name">
-
-                        <div class="user">
                                 
-                            <div class="name">
-                                {{name.name}}
-                            </div>
+                        </li>
 
-                            <div class="last-message">
-                                Ultimo accesso {{today}} alle {{dt.hour}}:{{dt.minute}}
-                            </div>
-                        </div>
-                    
+                        <!-- Se non ci sono chat da mostrare appare questa scritta -->
+                        <li v-else class="list-users-empty">
+                            Non ci sono chat da mostrare
+                        </li>
+
+                    </ul>
+                
                 </div>
 
-                <!-- Parte icone -->
-                <div class="info-icons">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-paperclip"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
             </div>
 
+            <!-- Parte destra con le chat -->
+            <div class="chat-content">
 
-            <!-- Inizio parte chat -->
-            <div class="chat">
+                <div class="info users" :class="contacts.length === 0 ? 'flex-end' : ''">
+                    <!-- Parte con avatar e nome -->
+                    <div class="info-avatar" v-for="(names, index) in contacts" :class="activeContact === index ? 'active' : ''">
 
-                <!-- Lista dei messaggi -->
-                <ul>
-                    <li v-for="(contact, index) in contacts[activeContact].messages" :class="contact.status === 'sent' ? 'my-message' : 'user-message'">
-                        <div class="text-message">
-                            {{contact.message}}
-                            <div class="hour">
-                                {{contact.date}}
+                            <img class="avatar" :src="names.avatar" :alt="'avatar ' + names.name">
+
+                            <div class="user">
+                                    
+                                <div class="name">
+                                    {{names.name}}
+                                </div>
+
+                                <div v-if="lastAccess && !isWriting" class="last-message">
+                                    Ultimo accesso {{today}} alle {{dt.hour}}:{{dt.minute}}
+                                </div>
+
+                                <div v-if="isWriting">
+                                    Sta scrivendo...
+                                </div>
+
+                                <div v-if="online">
+                                    Online
+                                </div>
                             </div>
-
-                            <div class="arrow-down" @click="contact.isHidden = !contact.isHidden">
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </div>
-                                <ul v-if="contact.isHidden" class="menu-message">
-                                    <li>
-                                        Info Message
-                                    </li>
-                                    <li @click="deleteMessage(index)">
-                                        Delete message
-                                    </li>
-                                </ul>
-                        </div>
                         
-                    </li>
-                </ul>
+                    </div>
 
-            </div>
-
-            <!-- Parte con input e icone -->
-            <div class="input-text">
-
-                <i class="fa-regular fa-face-smile"></i>
-
-                <input v-for="(message, index) in contacts" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage" :class="activeContact === index ? 'active' : ''">
-
-                <div v-if="error && newMessage.length === 0" class="error">
-                    Non puoi inviare messaggio vuoto o che inizia con uno spazio
+                    <!-- Parte icone -->
+                    <div class="info-icons">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical dots" @click="showMenuUser = !showMenuUser"></i>
+                        <ul v-if="showMenuUser" class="menu-dropdown">
+                            <li @click="deleteAllMessages">
+                                Elimina messaggi
+                            </li>
+                            <li @click="deleteChat">
+                                Elimina chat
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <i v-if="newMessage.length === 0" class="fa-solid fa-microphone"></i>
 
-                <i v-else class="fa-solid fa-paper-plane" @click="addMessage"></i>
+                <!-- Inizio parte chat -->
+                <div class="chat">
+
+                    <!-- Lista dei messaggi -->
+                    <ul>
+                        <li v-for="(contact, index) in contacts[activeContact].messages" :class="contact.status === 'sent' ? 'my-message' : 'user-message'" v-if="contacts.length != 0">
+                            <div class="text-message">
+                                {{contact.message}}
+                                <div class="hour">
+                                    {{contact.date}}
+                                </div>
+
+                                <div class="arrow-down" @click="contact.visible = !contact.visible">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </div>
+                                    <ul v-if="contact.visible" class="menu-dropdown">
+                                        <li>
+                                            Info Message
+                                        </li>
+                                        <li @click="deleteMessage(index)">
+                                            Delete message
+                                        </li>
+                                    </ul>
+                            </div>
+                            
+                        </li>
+                    </ul>
+
+                </div>
+
+                <!-- Parte con input e icone -->
+                <div class="input-text">
+
+                    <i class="fa-regular fa-face-smile emoticons"></i>
+
+                    <input v-for="(message, index) in contacts" type="text" class="input-message" placeholder="Scrivi un messaggio" v-model="newMessage" @KeyUp.enter="addMessage" :class="activeContact === index ? 'active' : ''">
+
+                    <div v-if="error && newMessage.length === 0" class="error">
+                        Non puoi inviare messaggio vuoto
+                    </div>
+
+                    <i v-if="newMessage.length === 0" class="fa-solid fa-microphone"></i>
+
+                    <i v-else class="fa-solid fa-paper-plane" @click="addMessage"></i>
+
+                </div>
 
             </div>
-
         </div>
     </div>
-
+        
     <script src="js/myscript.js"></script>
     
 </body>
