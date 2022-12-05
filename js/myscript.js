@@ -405,6 +405,6 @@ createApp({
             else {
               return this.contacts;
             }
-          }
+        }
     }
 }).mount('#app')
