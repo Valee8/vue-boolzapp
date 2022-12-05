@@ -237,9 +237,6 @@ createApp({
                     this.showMenuMyInfo = true;
                 }
             }
-
-            // Svuoto contenuto newContact
-            this.newContact = "";
         },
         myChoise(indice) {
 
