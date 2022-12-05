@@ -226,6 +226,21 @@ createApp({
         }
     },
     methods: {
+        dropDownInfo() {
+
+            if (this.showChat) {
+                
+                if (this.showMenuMyInfo) {
+                    this.showMenuMyInfo = false;
+                }
+                else {
+                    this.showMenuMyInfo = true;
+                }
+            }
+
+            // Svuoto contenuto newContact
+            this.newContact = "";
+        },
         myChoise(indice) {
 
             this.activeContact = indice;
