@@ -389,16 +389,13 @@ createApp({
                 // Faccio scomparire il popup
                 this.showPopup = false;
             }
-            else {
-                this.error2 = true;
-            }
 
             // Svuoto il contenuto di newContact
             this.newContact = "";
-        }
+        },
     },
     computed: {
-        // Funzione per cercare i contatti
+        //Funzione per cercare i contatti
         searchContact(){
             if (this.search) {
             return this.contacts.filter((item) => {
